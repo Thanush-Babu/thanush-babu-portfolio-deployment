@@ -425,7 +425,7 @@ body.active { overflow: hidden; }
   position: relative;
   width: max-content;
   margin-inline: auto;
-  color: var(--color-primary);
+  color: #e38445;
   font-family: var(--ff-poppins);
   font-size: var(--fs-1);
   padding: 10px;
@@ -452,8 +452,14 @@ body.active { overflow: hidden; }
 
 .navbar-link:is(:hover, :focus)::before { width: 100%; }
 
+.SDE img {
+  transition: width 0.5s, box-shadow 0.5s;
+}
 
-
+.SDE img:hover {
+  width: 90px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
 
 
 /*-----------------------------------*\
@@ -675,7 +681,9 @@ main { overflow-x: hidden; }
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-12);
+  transform: scale(.9);
   box-shadow: 2px 4px 6px hsla(0, 0%, 0%, 0.2);
+  transition: transform 0.5s ease-in-out;
 }
 
 .project-card::after {
@@ -684,11 +692,18 @@ main { overflow-x: hidden; }
   inset: 0;
   border-radius: inherit;
   transition: var(--transition-1);
+  /* transform: scale(1.2); */
+}
+
+.project-card:is(:hover, :focus) {
+  transform: scale(1); /* Scales the outer div */
 }
 
 .project-card:is(:hover, :focus)::after {
   background: hsla(0, 0%, 100%, 0.1);
-  backdrop-filter: blur(0.5px);
+  /* backdrop-filter: blur(0.5px); */
+  transform: scale(1);
+
 }
 
 .project-card .card-content {
@@ -697,6 +712,7 @@ main { overflow-x: hidden; }
   left: 0;
   width: 100%;
   padding: 20px;
+
 }
 
 .project-card .card-title { margin-bottom: 10px; }
@@ -718,8 +734,10 @@ main { overflow-x: hidden; }
 }
 
 .project-card:is(:hover, :focus) :is(.card-title, .publish-date) {
+  border-radius: .5rem;
   transform: translateY(0);
   opacity: 1;
+  
 }
 
 .project-card:is(:hover, :focus) .publish-date { transition-delay: 0.1s; }
@@ -731,7 +749,13 @@ main { overflow-x: hidden; }
   margin-inline: auto;
 }
 
+/* .project-card .card-banner {
+  transition: transform 0.5s ease-in-out; 
+}
 
+.project-card:is(:hover, :focus) .card-banner {
+  transform: scale(1.2);
+} */
 
 
 
@@ -1168,11 +1192,12 @@ textarea.input-field {
     transition: var(--transition-1);
   }
 
-  .hero-social-link:is(:hover, :focus) { color: var(--color-primary); }
+  .hero-social-link:is(:hover, :focus) {
+    color: var(--color-primary); 
+    }
 
   .hero-social-link .tooltip {
     --trans-x: 10px;
-
     left: calc(100% + 10px);
     top: 50%;
     transform: translateY(-50%) translateX(var(--trans-x));
