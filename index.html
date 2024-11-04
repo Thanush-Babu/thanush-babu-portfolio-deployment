@@ -6,19 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thanush Babu Portfolio</title>
 
-    <!-- 
-    - favicon
-  -->
+    <!-- EmailJS Script -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init({
+          publicKey: "HBNWOdwlkYgr6SYdo",
+        });
+      })();
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("contact-form")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            // these IDs from the previous steps
+            emailjs.sendForm("port_contact_service", "portfolio_contact_form", this).then(
+              () => {
+                console.log("SUCCESS!");
+                resetForm(event);
+              },
+              (error) => {
+                console.log("FAILED...", error);
+              }
+            );
+          });
+      };
+    </script>
+
+    <!-- favicon -->
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
 
-    <!-- 
-    - custom css link
-  -->
+    <!-- custom css link -->
     <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <!-- 
-    - google font link
-  -->
+    <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,9 +55,7 @@
   </head>
 
   <body id="top" class="light_theme">
-    <!-- 
-    - #HEADER
-  -->
+    <!-- #HEADER -->
 
     <header class="header" data-header>
       <div class="container">
@@ -589,7 +614,8 @@
             <li>
               <a
                 href="https://thanush-blood-bank.vercel.app"
-                class="project-card" target="_blank"
+                class="project-card"
+                target="_blank"
               >
                 <figure class="card-banner">
                   <img
@@ -609,11 +635,11 @@
               </a>
             </li>
 
-
             <li>
               <a
                 href="https://naruto-ecommerce.vercel.app"
-                class="project-card" target="_blank"
+                class="project-card"
+                target="_blank"
               >
                 <figure class="card-banner">
                   <img
@@ -634,7 +660,8 @@
             <li>
               <a
                 href="https://solar-system-explorer.vercel.app"
-                class="project-card" target="_blank"
+                class="project-card"
+                target="_blank"
               >
                 <figure class="card-banner">
                   <img
@@ -653,7 +680,11 @@
             </li>
 
             <li>
-              <a href="https://kbtm-restaurant.vercel.app" class="project-card" target="_blank">
+              <a
+                href="https://kbtm-restaurant.vercel.app"
+                class="project-card"
+                target="_blank"
+              >
                 <figure class="card-banner">
                   <img
                     src="./assets/images/project-3.png"
@@ -672,7 +703,7 @@
               </a>
             </li>
 
-            <li style="margin: 10rem 0 0 0">
+            <li style="margin: 10rem 0 0 0;">
               <a
                 href="https://github.com/Thanush-Babu?tab=repositories"
                 target="_blank"
@@ -680,7 +711,6 @@
                 <button class="load-more">Load more work</button>
               </a>
             </li>
-
           </ul>
         </section>
 
@@ -745,20 +775,22 @@
                     >thanushcse1avec@gmail.com</a
                   >
 
-                  <!-- <a
+                  <a
                     href="mailto:thanushgithub007@gmail.com"
                     class="contact-info"
-                    >thanushgithub007@gmail.com</a
-                  > -->
+                    >thanushbabu2209@gmail.com</a
+                  > 
                 </div>
               </li>
 
               <li>
                 <ul class="contac-social-list">
-
-
                   <li>
-                    <a href="https://github.com/Thanush-Babu" class="contact-social-link" target="_blank">
+                    <a
+                      href="https://github.com/Thanush-Babu"
+                      class="contact-social-link"
+                      target="_blank"
+                    >
                       <div class="tooltip">GitHub</div>
 
                       <ion-icon name="logo-Github"></ion-icon>
@@ -766,7 +798,11 @@
                   </li>
 
                   <li>
-                    <a href="https://www.linkedin.com/in/thanush-babu-a89025236/" class="contact-social-link" target="_blank">
+                    <a
+                      href="https://www.linkedin.com/in/thanush-babu-a89025236/"
+                      class="contact-social-link"
+                      target="_blank"
+                    >
                       <div class="tooltip">Linkedin</div>
 
                       <ion-icon name="logo-linkedin"></ion-icon>
@@ -774,7 +810,11 @@
                   </li>
 
                   <li>
-                    <a href="https://instagram.com/thanush_._b" class="contact-social-link" target="_blank">
+                    <a
+                      href="https://instagram.com/thanush_._b"
+                      class="contact-social-link"
+                      target="_blank"
+                    >
                       <div class="tooltip">Instagram</div>
 
                       <ion-icon name="logo-instagram"></ion-icon>
@@ -784,16 +824,17 @@
               </li>
             </ul>
           </div>
-
-          <form action="" class="contact-form">
+          
+          <!-- CONTACT FORM -->
+          <form action="" class="contact-form" id="contact-form">
             <div class="form-wrapper">
-              <label for="name" class="form-label">Name</label>
+              <label for="user_name" class="form-label">Name</label>
 
               <div class="input-wrapper">
                 <input
                   type="text"
-                  name="name"
-                  id="name"
+                  name="user_name"
+                  id="user_name"
                   required
                   placeholder="e.g Thanush Babu"
                   class="input-field"
@@ -804,15 +845,15 @@
             </div>
 
             <div class="form-wrapper">
-              <label for="email" class="form-label">Email</label>
+              <label for="user_email" class="form-label">Email</label>
 
               <div class="input-wrapper">
                 <input
                   type="email"
-                  name="email"
-                  id="email"
+                  name="user_email"
+                  id="user_email"
                   required
-                  placeholder="e.g thanushbabu@mail.com"
+                  placeholder="e.g example@mail.com"
                   class="input-field"
                 />
 
@@ -821,20 +862,17 @@
             </div>
 
             <div class="form-wrapper">
-              <label for="phone" class="form-label">Phone</label>
-
-              <div class="input-wrapper">
+              <!-- <label for="contact_number" class="form-label">Phone</label> 
+              <div class="input-wrapper"> -->
                 <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  required
-                  placeholder="Phone Number"
-                  class="input-field"
+                  type="hidden"
+                  name="contact_number"
+                  id="contact_number"
+                  value="59424"
                 />
 
-                <ion-icon name="call"></ion-icon>
-              </div>
+                <!-- <ion-icon name="call"></ion-icon> 
+              </div> -->
             </div>
 
             <div class="form-wrapper">
@@ -883,21 +921,19 @@
       <ion-icon name="arrow-up"></ion-icon>
     </a>
 
-    <!-- 
-    - custom js link
-  -->
+    <!-- custom js link -->
     <script src="./assets/js/script.js"></script>
 
-    <!-- 
-    - ionicon link
-  -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+    <!-- ionicon link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" ></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" ></script>
+
+    <!-- Form reset function -->
+     <script>
+      function resetForm(event) {
+        event.preventDefault(); // Prevent form from submitting to a server
+        document.getElementById("contact-form").reset(); // Reset form fields
+      }
+     </script>
   </body>
 </html>
