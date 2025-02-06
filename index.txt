@@ -19,8 +19,6 @@ Skills.
 Portfolio.
 Contact.
 
-
-
 # HERO
 
 alt = A man in a blue shirt with a happy expression
